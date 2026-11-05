@@ -2,7 +2,7 @@
 
 Machine-learning models and an interactive what-if scenario tool for modeling and forecasting health-expenditure trends. Developed during a mandatory summer internship at the Social Security Institution (SGK), Health Software Department (2025).
 
-> **Note:** This is an intern project built entirely on **synthetic data**. Interns are not given access to real or sensitive data (per KVKK - Turkey's data-protection law - and institutional confidentiality), so all datasets were generated to approximate realistic distributions. It is not an official SGK product and uses no real health, prescription or cost data.
+> **Note:** This is an intern project built entirely on **synthetic data**. Interns are not given access to real or sensitive data (per KVKK, Turkey's data-protection law, and institutional confidentiality), so all datasets were generated to approximate realistic distributions. It is not an official SGK product and uses no real health, prescription or cost data.
 
 ## Problem
 
