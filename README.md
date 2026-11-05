@@ -2,7 +2,7 @@
 
 Machine-learning models and an interactive what-if scenario tool for modeling and forecasting health-expenditure trends. Developed during a mandatory summer internship at the Social Security Institution (SGK), Health Software Department (2025).
 
-> **Note:** This is an intern project built entirely on **synthetic data**. Interns are not given access to real or sensitive data (per KVKK — Turkey's data-protection law — and institutional confidentiality), so all datasets were generated to approximate realistic distributions. It is not an official SGK product and uses no real health, prescription or cost data.
+> **Note:** This is an intern project built entirely on **synthetic data**. Interns are not given access to real or sensitive data (per KVKK - Turkey's data-protection law - and institutional confidentiality), so all datasets were generated to approximate realistic distributions. It is not an official SGK product and uses no real health, prescription or cost data.
 
 ## Problem
 
@@ -20,11 +20,11 @@ Generation reflected historical trends, monthly seasonality, annual health-infla
 
 ## Methods
 
-- **Preprocessing** — missing-value handling, outlier detection, type conversion, scaling/normalization.
-- **EDA** — distributions (histograms, boxplots), correlation matrices, cost comparisons by service/institution/prescription.
-- **Modeling** — Linear, Ridge, Lasso, Random Forest, Gradient Boosting and MLP regression; 80/20 split; evaluated with MSE, RMSE and R²; k-fold cross-validation.
-- **Overfitting control** — learning curves, bias–variance and permutation-importance analysis.
-- **What-if module** — an interactive UI to adjust parameters and see the effect on total expenditure.
+- **Preprocessing** - missing-value handling, outlier detection, type conversion, scaling/normalization.
+- **EDA** - distributions (histograms, boxplots), correlation matrices, cost comparisons by service/institution/prescription.
+- **Modeling** - Linear, Ridge, Lasso, Random Forest, Gradient Boosting and MLP regression; 80/20 split; evaluated with MSE, RMSE and R²; k-fold cross-validation.
+- **Overfitting control** - learning curves, bias–variance and permutation-importance analysis.
+- **What-if module** - an interactive UI to adjust parameters and see the effect on total expenditure.
 
 ## Key findings
 
@@ -34,15 +34,15 @@ Generation reflected historical trends, monthly seasonality, annual health-infla
 - Prescription dataset: average prescription cost (r = 0.80) and prescription count (r = 0.74) dominate; health inflation tracks year almost perfectly (r = 0.99).
 
 **Modeling and the overfitting analysis (the main result)**
-- Random Forest reached R² ≈ 0.999 on the service-type dataset — but this was diagnosed as **overfitting**, not success:
+- Random Forest reached R² ≈ 0.999 on the service-type dataset, but this was diagnosed as **overfitting**, not success:
   - learning curves showed a persistent train–validation gap,
   - 5-fold cross-validation produced very high error variance,
   - permutation importance revealed the model leaned almost entirely on `Elderly Ratio` and `Year`.
-- Retuning model complexity (e.g. `max_depth=10`, `min_samples_leaf=5`) produced a more balanced model; an over-simplified version instead underfit — illustrating the bias–variance trade-off directly.
+- Retuning model complexity (e.g. `max_depth=10`, `min_samples_leaf=5`) produced a more balanced model; an over-simplified version instead underfit, illustrating the bias–variance trade-off directly.
 
 ## What-if scenario module
 
-A Gradio app (launched from notebook `08`) with sliders for visit-count, unit-cost and disease-rate changes (−20% to +20%) and ready-made scenario templates (Baseline, Optimistic, Crisis). It runs the three dataset models on the adjusted inputs and shows base-vs-scenario spending as a table, bar/pie/line charts and a summary sentence — a decision-support aid for proactive, evidence-based budget planning.
+A Gradio app (launched from notebook `08`) with sliders for visit-count, unit-cost and disease-rate changes (−20% to +20%) and ready-made scenario templates (Baseline, Optimistic, Crisis). It runs the three dataset models on the adjusted inputs and shows base-vs-scenario spending as a table, bar/pie/line charts and a summary sentence - a decision-support aid for proactive, evidence-based budget planning.
 
 ![What-if controls and results](docs/whatif_overview.png)
 ![Base vs scenario comparison](docs/whatif_comparison.png)
@@ -71,15 +71,14 @@ Launch Jupyter and open the notebooks:
 jupyter notebook
 ```
 
-- For the what-if tool, open `notebooks/08_what_if_analysis.ipynb` and run the cells — this launches an interactive Gradio interface in the browser. The required models are included, so no retraining is needed.
+- For the what-if tool, open `notebooks/08_what_if_analysis.ipynb` and run the cells. This launches an interactive Gradio interface in the browser. The required models are included, so no retraining is needed.
 - To reproduce the full pipeline, run the notebooks in order: `01` (data prep) → `02`–`04` (EDA) → `05`–`07` (modeling) → `08` (what-if).
 
-> **Models:** the smaller trained models (including the three the what-if tool loads) are included under `models/`, so the what-if tool runs without retraining. The two largest Random Forest models are not tracked — regenerate them by running the modeling notebooks.
+> **Models:** the smaller trained models (including the three the what-if tool loads) are included under `models/`, so the what-if tool runs without retraining. The two largest Random Forest models are not tracked, regenerate them by running the modeling notebooks.
 
 ## Limitations
 
-- All data is synthetic, generated to approximate realistic distributions. The models therefore learn the chosen generation process, so the accuracy figures validate the *methodology*, not real-world expenditure — the work is a prototype and decision-support demonstration, not a production forecast.
-- In the what-if tool, the models respond clearly to visit-count and unit-cost changes, but are largely insensitive to the disease-rate parameter: the synthetic data did not tie expenditure to it, so the institution model barely weights that feature.
+- All data is synthetic, generated to approximate realistic distributions. The models therefore learn the chosen generation process, so the accuracy figures validate the *methodology*, not real-world expenditure. The work is a prototype and decision-support demonstration, not a production forecast.
 
 ## Author
 
