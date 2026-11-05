@@ -44,6 +44,9 @@ Generation reflected historical trends, monthly seasonality, annual health-infla
 
 A Gradio app (launched from notebook `08`) with sliders for visit-count, unit-cost and disease-rate changes (−20% to +20%) and ready-made scenario templates (Baseline, Optimistic, Crisis). It runs the three dataset models on the adjusted inputs and shows base-vs-scenario spending as a table, bar/pie/line charts and a summary sentence — a decision-support aid for proactive, evidence-based budget planning.
 
+![What-if controls and results](docs/whatif_overview.png)
+![Base vs scenario comparison](docs/whatif_comparison.png)
+
 ## Tech stack
 
 - **Language:** Python
@@ -76,6 +79,7 @@ jupyter notebook
 ## Limitations
 
 - All data is synthetic, generated to approximate realistic distributions. The models therefore learn the chosen generation process, so the accuracy figures validate the *methodology*, not real-world expenditure — the work is a prototype and decision-support demonstration, not a production forecast.
+- In the what-if tool, the models respond clearly to visit-count and unit-cost changes, but are largely insensitive to the disease-rate parameter: the synthetic data did not tie expenditure to it, so the institution model barely weights that feature.
 
 ## Author
 
